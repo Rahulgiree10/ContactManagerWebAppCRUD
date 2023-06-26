@@ -103,20 +103,19 @@ exports.updateContact = async (req, res) => {
 
 //email
 exports.email = async (req, res)=>{
-  try{
+  const contacts = await db.contact.findAll(
+
+  );
   const {message} = req.body;
   console.log(message);
-  
-  await sendEmail({
-    to: "prathamneupane5@gmail.com",
-    text: message,
-    subject: "Notification",
+
+  contacts.forEach(async(user) => {
+      await sendEmail({
+      to: user.email,
+      text: message,
+      subject: "Notification",
+    });
   });
-}
-catch(e){
-  // res.render("error");
-  console.log("first")
-}
 }
 
 exports.renderEmail = async (req, res) => {

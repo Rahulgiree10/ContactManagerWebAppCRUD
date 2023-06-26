@@ -6,36 +6,44 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .w3-button {width:150px;}
+
+        .center {
+          border: 5px solid;
+          text-align: center;
+        }
     </style>
 </head>
-<body class="w3-cursive">
-  <h1 class="w3-display-topmiddle w3-hide-small">Contact Registration</h1>
+<body class="w3-cursive w3 w3-black">
+  <div class="w3-container w3-grey w3-center w3-allerta">
+    <h1 class="w3-center w3-cursive w3-xxlarge">Edit Details of ID:<%-contact.id%></h1>
+  </div>
   <form  action="/updateContact/<%-contact.id %>" method="POST" enctype="multipart/form-data">
-  <div class="w3-container w3-display-middle">
+  <div class="w3-container w3-display-middle center">
     <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" value="<%=contact.firstName %>" required><br><br>
+    <input class="w3-grey" type="text" id="firstName" name="firstName" value="<%=contact.firstName %>" required><br><br>
 
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" value="<%=contact.lastName %>" required><br><br>
+    <input class="w3-grey" type="text" id="lastName" name="lastName" value="<%=contact.lastName %>" required><br><br>
 
     <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone" value="<%=contact.phone %>" required><br><br>
+    <input class="w3-grey" type="text" id="phone" name="phone" value="<%=contact.phone %>" required><br><br>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="<%=contact.email %>" required> <br><br>
+    <input class="w3-grey" type="email" id="email" name="email" value="<%=contact.email %>" required> <br><br>
 
     <label for="image">Image:</label>
-    <input type="file" id="image" name="image" accept="image/*" onchange="preview()" required><br><br>
+    <input class="w3-grey" type="file" id="image" name="image" accept="image/*" value="<%=contact.Image%>" onchange="preview()" required><br><br>
     <img id="frame" src="<%=contact.Image %>" width="150" height="100">
 
-    <input class="w3-button w3-indigo" type="submit" value="Update">
+    <input class="w3-button w3-grey" type="submit" value="Update">
   </form>
-
-  <script>
-    function preview(){
-        frame.src = URL.createObjectURL(event.target.files[0]);
-    }
-</script>
 </div>
+<a href="/single/<%-contact.id%>"><button class="w3-tiny w3-button w3-grey w3-display-bottomright">Back</button></a>
+<a href="/viewContacts"><button class="w3-tiny w3-button w3-grey w3-display-bottomleft">View Contacts</button></a>
+<script>
+  function preview(){
+      frame.src = URL.createObjectURL(event.target.files[0]);
+  }
+</script>
 </body>
 </html>

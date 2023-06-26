@@ -28,20 +28,13 @@ app.get("/single/:id", contactController.viewSingleContact);
 
 app.get("/delete/:id", contactController.delete);
 
-app.get("/email", contactController.renderEmail);
-
-app.post("/email", contactController.email);
-
 app.get("/edit/:id", contactController.edit);
 
 app.post("/updateContact/:id", upload.single('image'), contactController.updateContact);
 
-// app.get("/delete/:id", blogController.delete);
+app.get("/email", contactController.renderEmail);
 
-// app.get("/edit/:id",blogController.edit)
-
-// app.post("/updateBlog/:id", upload.single('image'), blogController.updateBlog);
-
+app.post("/email", contactController.email);
 
 //starting the server
 app.listen(port, () => {
